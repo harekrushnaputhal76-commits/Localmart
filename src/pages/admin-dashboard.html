@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Admin Panel - Local Mart</title>
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<body>
+  <div class="app-wrapper">
+    <header>
+      <a href="profile.html">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </a>
+      <h1>Admin Dashboard</h1>
+      <a href="login.html" style="font-size: 12px; color: var(--danger); font-weight: 600;">Logout</a>
+    </header>
+
+    <main class="animate-fade-in" style="padding: 14px; padding-bottom: 95px;">
+      <!-- KPI Stats Grid -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px;">
+        <div style="background: var(--surface); border-radius: 10px; padding: 14px; border: 1px solid var(--border);">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Active Listings</div>
+          <div style="font-size: 22px; font-weight: 800; color: var(--primary); margin-top: 4px;">6 Listings</div>
+        </div>
+        <div style="background: var(--surface); border-radius: 10px; padding: 14px; border: 1px solid var(--border);">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Total Orders</div>
+          <div style="font-size: 22px; font-weight: 800; color: var(--success); margin-top: 4px;">12 Orders</div>
+        </div>
+        <div style="background: var(--surface); border-radius: 10px; padding: 14px; border: 1px solid var(--border);">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Delivery Boys</div>
+          <div style="font-size: 22px; font-weight: 800; color: var(--accent); margin-top: 4px;">8 Online</div>
+        </div>
+        <div style="background: var(--surface); border-radius: 10px; padding: 14px; border: 1px solid var(--border);">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">GMV Volume</div>
+          <div style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-top: 4px;">₹1,42,800</div>
+        </div>
+      </div>
+
+      <div style="font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">Recent Live Orders</div>
+      <div style="background: var(--surface); border-radius: 10px; border: 1px solid var(--border); overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+          <thead>
+            <tr style="background: var(--bg-app); border-bottom: 1px solid var(--border); text-align: left;">
+              <th style="padding: 10px 8px;">Order ID</th>
+              <th style="padding: 10px 8px;">Item</th>
+              <th style="padding: 10px 8px;">Buyer</th>
+              <th style="padding: 10px 8px;">Address</th>
+              <th style="padding: 10px 8px;">Price</th>
+              <th style="padding: 10px 8px;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="home.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Home</span>
+        </a>
+        <a href="categories.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Categories</span>
+        </a>
+        <a href="sell.html" class="nav-fab">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </a>
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profile</span>
+        </a>
+      </nav>
+    </footer>
+  </div>
+
+  <script src="../../public/js/app.js"></script>
+</body>
+</html>

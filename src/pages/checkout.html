@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout - Local Mart</title>
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<body style="background-color: #f2f2f2;">
+  <header class="checkout-header">
+    <a href="product-detail.html">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </a>
+    <h1>Secure Checkout</h1>
+  </header>
+
+  <main style="padding: 15px; padding-bottom: 110px; background: #f2f2f2; display: flex; flex-direction: column; gap: 15px;">
+    <!-- Section 1: Delivery Address -->
+    <div class="checkout-card">
+      <h3>📍 Delivery Location</h3>
+      <div class="address-box">
+        <strong>Home Address</strong><br>
+        Flat 402, Green Glen Heights, Sector 4<br>
+        Near City Mall, HSR Layout, Bengaluru - 560102<br>
+        Phone: +91 98765 43210
+      </div>
+      <button type="button" class="btn-gps">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+        Detect my GPS Location
+      </button>
+    </div>
+
+    <!-- Section 2: Detailed Price Breakdown / Billing -->
+    <div class="checkout-card">
+      <h3>🧾 Order Summary</h3>
+      <div class="bill-row">
+        <span>Item Total (1 item)</span>
+        <span>₹42,999</span>
+      </div>
+      <div class="bill-row">
+        <span>Delivery Partner Fee (Local 5km)</span>
+        <span style="color: #10b981; font-weight: 600;">FREE</span>
+      </div>
+      <div class="bill-row">
+        <span>Platform & Safety Fee</span>
+        <span>₹49</span>
+      </div>
+      <hr class="bill-divider">
+      <div class="bill-row total">
+        <strong>Grand Total</strong>
+        <strong style="color: #2874f0;">₹43,048</strong>
+      </div>
+    </div>
+
+    <!-- Section 3: Payment Gateway UI -->
+    <div class="checkout-card">
+      <h3>💳 Select Payment Method</h3>
+      
+      <label class="payment-option">
+        <input type="radio" name="payment-method" value="upi" checked>
+        <div class="payment-label">
+          <strong>UPI (Google Pay, PhonePe, Paytm)</strong>
+          <span>Instant refund & zero transaction fee</span>
+        </div>
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="payment-method" value="card">
+        <div class="payment-label">
+          <strong>Credit / Debit Card</strong>
+          <span>Visa, Mastercard, RuPay, Maestro</span>
+        </div>
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="payment-method" value="cod">
+        <div class="payment-label">
+          <strong>Cash on Delivery (COD)</strong>
+          <span>Pay in cash or UPI upon home delivery</span>
+        </div>
+      </label>
+    </div>
+  </main>
+
+  <!-- Fixed Non-floating Bottom Bar -->
+  <div class="checkout-bottom-bar">
+    <div class="checkout-total-info">
+      <span>Total Amount</span>
+      <strong>₹43,048</strong>
+    </div>
+    <a href="order-success.html" style="text-decoration: none;">
+      <button type="button" class="btn-place-order">Place Order & Pay</button>
+    </a>
+  </div>
+
+  <script src="../../public/js/app.js"></script>
+</body>
+</html>

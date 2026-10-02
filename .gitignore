@@ -1,0 +1,21 @@
+# Node & Package Managers
+node_modules/
+package-lock.json
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Android & Capacitor Build Artefacts
+android/
+ios/
+capacitor.config.json.lock
+*.apk
+*.aab
+
+# Local logs & tmp
+*.log
+tmp/
+.temp/

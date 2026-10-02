@@ -1,0 +1,727 @@
+/* ==========================================================================
+   LOCAL MART - MASTER FULL-STACK MOBILE APP STYLESHEET
+   Enterprise Flipkart-Level Android Native UI Architecture
+   ========================================================================== */
+
+/* 1. COLOR TOKENS & SYSTEM VARIABLES */
+:root {
+  --primary: #2874f0;
+  --primary-dark: #1259c7;
+  --primary-light: #e6f0ff;
+  --accent: #ff9f00;
+  --accent-orange: #fb641b;
+  --success: #388e3c;
+  --success-bg: #e8f5e9;
+  --danger: #d32f2f;
+  --danger-bg: #ffebee;
+  
+  --bg-desktop: #1e293b;
+  --bg-app: #f1f3f6;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  
+  --text-main: #212121;
+  --text-secondary: #666666;
+  --text-muted: #878787;
+  --text-on-primary: #ffffff;
+  
+  --border: #e0e0e0;
+  --border-light: #f0f0f0;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-bottom-nav: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  --app-max-width: 480px;
+  --header-height: 54px;
+  --nav-height: 62px;
+}
+
+/* Dark Mode Token Overrides */
+[data-theme="dark"],
+.dark-theme,
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-desktop: #000000;
+    --bg-app: #121212;
+    --surface: #1e1e1e;
+    --surface-alt: #282828;
+    --text-main: #f5f5f5;
+    --text-secondary: #b3b3b3;
+    --text-muted: #808080;
+    --border: #333333;
+    --border-light: #2a2a2a;
+    --primary-light: rgba(40, 116, 240, 0.15);
+  }
+}
+
+/* 2. GLOBAL RESET & BASE */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-desktop);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3. CENTERED PHONE APP SHELL */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-wrapper,
+.mobile-app {
+  width: 100%;
+  max-width: var(--app-max-width);
+  height: 100%;
+  max-height: 100vh;
+  background: var(--bg-app);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 500px) {
+  .app-wrapper,
+  .mobile-app {
+    height: 94vh;
+    border-radius: 24px;
+    border: 8px solid #334155;
+  }
+}
+
+/* 4. SCROLLABLE MAIN CONTENT */
+main,
+.scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--nav-height) + 20px);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 5. FLIPKART SIGNATURE BLUE HEADER */
+.flipkart-header {
+  background: var(--primary);
+  padding: 10px 14px 12px 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.brand-row h2 {
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-tag {
+  font-size: 11px;
+  background: var(--accent);
+  color: #111;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  gap: 8px;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13.5px;
+  color: #212121;
+  background: transparent;
+}
+
+.search-container input::placeholder {
+  color: #878787;
+}
+
+.search-icon, .mic-icon {
+  font-size: 15px;
+  color: #717478;
+  display: flex;
+  align-items: center;
+}
+
+.location-strip {
+  background: var(--primary-light);
+  padding: 7px 14px;
+  font-size: 11.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--primary);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.location-strip .loc-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 6. STANDARD TOP APP BAR */
+header:not(.flipkart-header) {
+  height: var(--header-height);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  flex-shrink: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+header:not(.flipkart-header) h1 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+header:not(.flipkart-header) a,
+header:not(.flipkart-header) button {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* 7. HORIZONTAL CATEGORY SLIDER */
+.category-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 14px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-light);
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.category-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 11.5px;
+  font-weight: 500;
+  flex-shrink: 0;
+  cursor: pointer;
+  width: 60px;
+  text-align: center;
+}
+
+.slider-item img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e2e8f0;
+  border: 1.5px solid var(--border);
+  transition: transform 0.15s ease;
+}
+
+.slider-item:active img {
+  transform: scale(0.92);
+}
+
+.slider-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* 8. PROMO HERO BANNER */
+.promo-banner {
+  margin: 12px 14px;
+  padding: 18px 16px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 122, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-badge {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.promo-banner h2 {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.promo-banner p {
+  font-size: 12.5px;
+  opacity: 0.92;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 14px 6px 14px;
+  color: var(--text-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title a {
+  font-size: 12px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 9. PRODUCT GRID (2-COLUMN) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 0 14px 14px 14px;
+}
+
+.product-card {
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card:active {
+  transform: scale(0.98);
+}
+
+.product-card .card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 135px;
+  margin-bottom: 8px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--success);
+  color: white;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.product-title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-main);
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 35px;
+}
+
+.product-price {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.product-price .delivery-tag {
+  font-size: 10px;
+  color: var(--success);
+  font-weight: 700;
+}
+
+.btn-buy {
+  width: 100%;
+  padding: 9px 0;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.btn-buy:active {
+  transform: scale(0.96);
+  background: var(--primary-dark);
+}
+
+/* 10. BULLETPROOF BOTTOM NAVIGATION */
+footer nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: var(--shadow-bottom-nav);
+}
+
+footer nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  gap: 3px;
+  flex: 1;
+  height: 100%;
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+footer nav a.active {
+  color: var(--primary);
+}
+
+footer nav a svg {
+  width: 21px;
+  height: 21px;
+}
+
+.nav-fab {
+  width: 48px !important;
+  height: 48px !important;
+  background: var(--primary) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transform: translateY(-14px) !important;
+  box-shadow: 0 4px 14px rgba(40, 116, 240, 0.45) !important;
+  border: 3.5px solid var(--surface) !important;
+  cursor: pointer !important;
+  flex: none !important;
+  padding: 0 !important;
+}
+
+.nav-fab:active {
+  transform: translateY(-11px) scale(0.94) !important;
+}
+
+/* 11. CARDS, LISTS & FORMS */
+.card,
+.profile-card,
+.settings-section,
+.checkout-card {
+  background: var(--surface);
+  margin: 12px 14px;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.settings-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.settings-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.settings-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.settings-list li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.settings-list li.logout-btn {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* Form inputs */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.form-control,
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-main);
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(40, 116, 240, 0.15);
+}
+
+/* 12. CHECKOUT & BILLING */
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 5px 0;
+}
+
+.bill-row.total {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-main);
+  border-top: 1px dashed var(--border);
+  margin-top: 6px;
+  padding-top: 10px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  cursor: pointer;
+  background: var(--surface);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.payment-option:has(input:checked) {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.checkout-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--surface);
+  padding: 12px 16px;
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-top: 1px solid var(--border);
+}
+
+.btn-place-order {
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-orange);
+  color: #ffffff;
+  font-weight: 800;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-place-order:active {
+  transform: scale(0.97);
+}
+
+/* 13. TOAST NOTIFICATIONS */
+.toast-msg {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: #1e293b;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  z-index: 99999;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 14. ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
