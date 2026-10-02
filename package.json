@@ -1,0 +1,20 @@
+{
+  "name": "local-mart",
+  "version": "1.0.0",
+  "description": "Hyper-Local C2C E-Commerce Mobile Web & Capacitor App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "hyperlocal",
+    "c2c",
+    "capacitor",
+    "mobile-app",
+    "fullstack"
+  ],
+  "author": "harekrushnaputhal76-commits",
+  "license": "MIT"
+}

@@ -2,107 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Local Mart - Hyper-Local C2C Marketplace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="3;url=src/pages/login.html">
+  <title>Local Mart</title>
   <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
-  <div class="app-wrapper">
-    <!-- Top Flipkart Signature Blue Header -->
-    <header class="flipkart-header">
-      <div class="brand-row">
-        <h2>
-          Local Mart <span class="brand-tag">Plus</span>
-        </h2>
-        <div class="header-icons">
-          <a href="src/pages/notifications.html" class="header-icon-btn" title="Notifications">🔔</a>
-          <a href="src/pages/settings.html" class="header-icon-btn" title="Settings">⚙️</a>
-        </div>
+<body class="splash-body">
+  <main class="splash-screen animate-fade-in">
+    <div class="splash-card">
+      <div class="splash-logo-container animate-pulse-logo">
+        <svg viewBox="0 0 48 48" width="56" height="56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="14" fill="#10B981"/>
+          <path d="M14 18L17 12H31L34 18M14 18H34M14 18L16 34C16.1 35.1 17 36 18.1 36H29.9C31 36 31.9 35.1 32 34L34 18" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="24" cy="26" r="3" fill="white"/>
+        </svg>
       </div>
-
-      <div class="search-container">
-        <span class="search-icon">🔍</span>
-        <input type="search" placeholder="Search for Mobiles, Electronics, Furniture...">
-        <span class="mic-icon">🎤</span>
-      </div>
-
-      <div class="location-strip">
-        <div class="loc-left">
-          <span>📍</span>
-          <span id="user-location">Deliver to: HSR Layout, Bengaluru (Tap to Change)</span>
-        </div>
-        <span style="font-size: 10px; color: #004aad;">60-MIN DROP</span>
-      </div>
-    </header>
-
-    <!-- Main Scrollable Feed -->
-    <main class="animate-fade-in">
-      <!-- Horizontal Category Slider -->
-      <div class="category-slider">
-        <div class="slider-item">
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02560?w=150&q=80" alt="Mobiles">
-          <span>Mobiles</span>
-        </div>
-        <div class="slider-item">
-          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=150&q=80" alt="Fashion">
-          <span>Fashion</span>
-        </div>
-        <div class="slider-item">
-          <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=150&q=80" alt="Electronics">
-          <span>Electronics</span>
-        </div>
-        <div class="slider-item">
-          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=150&q=80" alt="Furniture">
-          <span>Furniture</span>
-        </div>
-        <div class="slider-item">
-          <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=150&q=80" alt="Vehicles">
-          <span>Vehicles</span>
-        </div>
-        <div class="slider-item">
-          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=150&q=80" alt="Services">
-          <span>Services</span>
-        </div>
-      </div>
-
-      <!-- Promo Hero Banner -->
-      <div class="promo-banner">
-        <span class="promo-badge">Hyper-Local C2C</span>
-        <h2>Verified Neighborhood Deals</h2>
-        <p>Buy safely from nearby residents. Delivered directly to your door with zero hassle.</p>
-      </div>
-
-      <!-- Section Title -->
-      <div class="section-title">
-        <span>Trending Near You</span>
-        <a href="src/pages/categories.html">View All ›</a>
-      </div>
-
-      <!-- 2-Column Product Grid (Dynamically Populated by app.js) -->
-      <div class="product-grid"></div>
-    </main>
-
-    <!-- Floating Native Bottom Navigation -->
-    <footer>
-      <nav>
-        <a href="index.html" class="active">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-          <span>Home</span>
-        </a>
-        <a href="src/pages/categories.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          <span>Categories</span>
-        </a>
-        <a href="src/pages/sell.html" class="nav-fab" title="Sell an Item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        </a>
-        <a href="src/pages/profile.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span>Profile</span>
-        </a>
-      </nav>
-    </footer>
-  </div>
+      <h1 class="splash-title">Local Mart</h1>
+      <p class="splash-tagline">Hyper-local Marketplace</p>
+      <div class="splash-loader"></div>
+    </div>
+  </main>
 
   <script src="public/js/app.js"></script>
 </body>

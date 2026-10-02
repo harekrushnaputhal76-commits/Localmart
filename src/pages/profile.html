@@ -41,6 +41,10 @@
         <span class="icon-label">🛵 Delivery Partner Portal</span>
         <span class="arrow">›</span>
       </a>
+      <a href="admin-dashboard.html" class="settings-item">
+        <span class="icon-label">🛡️ Admin & Staff Control Center</span>
+        <span class="arrow">›</span>
+      </a>
     </div>
 
     <section>
@@ -53,7 +57,7 @@
       <p style="font-size: 13px; color: var(--text-muted); margin: 0;">No past orders found.</p>
     </section>
 
-    <button type="button" class="btn-buy" style="background: #ef4444; margin-top: 10px;">
+    <button type="button" class="btn-buy" style="background: #ef4444; margin-top: 10px;" onclick="localStorage.removeItem('localmart_auth_role'); localStorage.removeItem('localmart_auth_user'); window.location.href='login.html';">
       Log Out
     </button>
   </main>

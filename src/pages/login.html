@@ -2,39 +2,330 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Login - Local Mart</title>
   <link rel="stylesheet" href="../../public/css/style.css">
+  <style>
+    /* iOS 100x High-End Glassmorphism & Segmented Controls */
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .apple-glass-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+      padding: 28px 22px;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] .apple-glass-card,
+    .dark-theme .apple-glass-card {
+      background: rgba(30, 30, 35, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .login-brand-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .login-3d-badge {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 14px;
+      background: linear-gradient(135deg, #0071e3 0%, #42a5f5 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0, 113, 227, 0.38), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      transform: perspective(600px) rotateX(4deg);
+    }
+
+    .login-brand-header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 0 0 6px 0;
+      color: var(--text-primary, #1d1d1f);
+    }
+
+    .login-brand-header p {
+      font-size: 13px;
+      color: #6e6e73;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* iOS Apple-Style Segmented Control */
+    .segmented-control {
+      display: flex;
+      background: rgba(120, 120, 128, 0.14);
+      border-radius: 14px;
+      padding: 4px;
+      margin-bottom: 24px;
+      position: relative;
+      gap: 3px;
+    }
+
+    .role-tab-btn {
+      flex: 1;
+      padding: 10px 4px;
+      border: none;
+      background: transparent;
+      border-radius: 11px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #6e6e73;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      white-space: nowrap;
+      box-shadow: none;
+    }
+
+    .role-tab-btn.active {
+      background: #ffffff;
+      color: #1d1d1f;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+
+    [data-theme="dark"] .role-tab-btn.active,
+    .dark-theme .role-tab-btn.active {
+      background: #3a3a3c;
+      color: #ffffff;
+    }
+
+    /* Auth Panels */
+    .auth-panel {
+      animation: fadeInPanel 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInPanel {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group-apple {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .form-group-apple label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #48484a;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    [data-theme="dark"] .form-group-apple label,
+    .dark-theme .form-group-apple label {
+      color: #a1a1a6;
+    }
+
+    .apple-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+      font-size: 14px;
+      color: #1d1d1f;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+
+    [data-theme="dark"] .apple-input,
+    .dark-theme .apple-input {
+      background: #2c2c2e;
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .apple-input:focus {
+      border-color: #0071e3;
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+    }
+
+    .btn-apple-primary {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-apple-primary:active {
+      transform: scale(0.97);
+    }
+
+    .info-badge-card {
+      background: rgba(0, 113, 227, 0.08);
+      border: 1px solid rgba(0, 113, 227, 0.2);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 12px;
+      color: #005bb5;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    [data-theme="dark"] .info-badge-card,
+    .dark-theme .info-badge-card {
+      background: rgba(0, 113, 227, 0.18);
+      border-color: rgba(0, 113, 227, 0.35);
+      color: #80bfff;
+    }
+
+    .credentials-hint {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 11.5px;
+      color: #b45309;
+      margin-top: 14px;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    [data-theme="dark"] .credentials-hint,
+    .dark-theme .credentials-hint {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+  </style>
 </head>
-<body>
-  <div class="app-wrapper" style="justify-content: center; align-items: center; padding: 24px; background: radial-gradient(circle at 50% 30%, #e0e7ff 0%, #f1f3f6 70%);">
-    <div style="background: var(--surface); border-radius: 20px; padding: 32px 24px; width: 100%; max-width: 360px; box-shadow: var(--shadow-lg); text-align: center; border: 1px solid var(--border);">
-      <div style="width: 64px; height: 64px; border-radius: 18px; background: #2874f0; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; box-shadow: 0 4px 14px rgba(40, 116, 240, 0.4);">
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
+<body class="login-body">
+  <div class="login-container">
+    <div class="apple-glass-card">
+      
+      <!-- Brand & Icon -->
+      <div class="login-brand-header">
+        <div class="login-3d-badge">
+          <svg viewBox="0 0 48 48" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 18L17 12H31L34 18M14 18H34M14 18L16 34C16.1 35.1 17 36 18.1 36H29.9C31 36 31.9 35.1 32 34L34 18" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="26" r="3.2" fill="white"/>
+          </svg>
+        </div>
+        <h1>Local Mart</h1>
+        <p>Hyper-Local Community Marketplace</p>
       </div>
 
-      <h1 style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Local Mart</h1>
-      <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 24px;">
-        Buy & sell in your neighborhood with doorstep verification & delivery.
-      </p>
+      <!-- 3-Way iOS Segmented Control -->
+      <div class="segmented-control" role="tablist">
+        <button type="button" class="role-tab-btn active" data-role="customer" role="tab">Customer</button>
+        <button type="button" class="role-tab-btn" data-role="partner" role="tab">Delivery Rider</button>
+        <button type="button" class="role-tab-btn" data-role="admin" role="tab">Admin / Staff</button>
+      </div>
 
-      <button type="button" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--surface); color: var(--text-main); font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: var(--shadow-sm);" onclick="localStorage.setItem('localmart_auth', 'true'); window.location.href='home.html';">
-        <svg viewBox="0 0 24 24" width="20" height="20">
-          <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.15z"/>
-          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.4 7.33 24 12 24z"/>
-          <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.16 0 9.94 0 12s.45 3.84 1.24 5.42l4.04-3.15z"/>
-          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.6 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-        </svg>
-        <span>Continue with Google</span>
-      </button>
+      <!-- TAB 1: CUSTOMER PANEL (Buy & Sell Linked) -->
+      <div id="panel-customer" class="auth-panel">
+        <div class="info-badge-card">
+          ✨ <strong>Unified Customer Account:</strong> You can effortlessly <strong>Buy</strong> local deals and <strong>Sell</strong> your own pre-owned items with zero fees.
+        </div>
 
-      <p style="font-size: 11px; color: var(--text-muted); margin-top: 18px; line-height: 1.4;">
-        By continuing, you agree to Local Mart's Terms of Service and Neighborhood Privacy Policy.
-      </p>
+        <button type="button" id="btn-customer-login" class="btn-apple-primary">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="#ffffff" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.15z"/>
+            <path fill="#ffffff" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.4 7.33 24 12 24z"/>
+            <path fill="#ffffff" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.16 0 9.94 0 12s.45 3.84 1.24 5.42l4.04-3.15z"/>
+            <path fill="#ffffff" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.6 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+          <span>Continue as Customer (Buy & Sell)</span>
+        </button>
+
+        <p style="font-size: 11.5px; color: #8e8e93; margin-top: 18px; text-align: center; line-height: 1.4;">
+          Instant access to browse neighborhood listings or post an item for sale in 60 seconds.
+        </p>
+      </div>
+
+      <!-- TAB 2: DELIVERY PARTNER PANEL -->
+      <div id="panel-partner" class="auth-panel" style="display: none;">
+        <div class="info-badge-card" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.25); color: #047857;">
+          🛵 <strong>Delivery Partner Portal:</strong> Earn ₹120+ per doorstep pickup & drop in your local pin code.
+        </div>
+
+        <form id="form-partner-login">
+          <div class="form-group-apple">
+            <label for="partner-phone">Partner Registered Mobile</label>
+            <input type="tel" id="partner-phone" class="apple-input" placeholder="e.g. 9876543210" value="9876543210" required>
+          </div>
+
+          <button type="submit" class="btn-apple-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);">
+            <span>Open Delivery Rider Portal</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- TAB 3: ADMIN & EMPLOYEE CONTROL PANEL -->
+      <div id="panel-admin" class="auth-panel" style="display: none;">
+        <div class="info-badge-card" style="background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.25); color: #6d28d9;">
+          🛡️ <strong>Master Control Center:</strong> Approve/Edit/Delete listings, manage live orders, and add employees.
+        </div>
+
+        <form id="form-admin-login">
+          <div class="form-group-apple">
+            <label for="admin-id">Admin / Staff ID</label>
+            <input type="text" id="admin-id" class="apple-input" placeholder="e.g. Gudu7894 or EMP101" value="Gudu7894" required autocomplete="username">
+          </div>
+
+          <div class="form-group-apple">
+            <label for="admin-pass">Security Password</label>
+            <input type="password" id="admin-pass" class="apple-input" placeholder="Enter password" value="Puthal@123" required autocomplete="current-password">
+          </div>
+
+          <button type="submit" class="btn-apple-primary" style="background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);">
+            <span>Sign In to Control Center</span>
+            <span>🔒</span>
+          </button>
+        </form>
+
+        <div class="credentials-hint">
+          <strong>Master Admin Default:</strong> ID: <code>Gudu7894</code> | Pass: <code>Puthal@123</code><br>
+          <em>(Credentials can be updated anytime inside the Admin Settings tab).</em>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; text-align: center;">
+        <a href="home.html" style="font-size: 12px; color: #0071e3; text-decoration: none; font-weight: 600;">
+          ← Skip and Explore Local Mart as Guest
+        </a>
+      </div>
+
     </div>
   </div>
 

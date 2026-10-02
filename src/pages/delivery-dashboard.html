@@ -2,65 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delivery Partner Portal - Local Mart</title>
   <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
-  <div class="app-wrapper">
-    <header>
-      <a href="profile.html">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-      </a>
-      <h1>Partner Delivery Portal</h1>
-      <div style="display: flex; align-items: center; gap: 6px;">
-        <span style="font-size: 11px; font-weight: 700; color: var(--success);">ONLINE</span>
-        <input type="checkbox" id="status-toggle" checked style="width: 16px; height: 16px; accent-color: var(--success);">
-      </div>
-    </header>
+  <header>
+    <h1>Delivery Partner Portal</h1>
+    <div>
+      <label for="status-toggle">Status: Online</label>
+      <input type="checkbox" id="status-toggle" checked>
+    </div>
+  </header>
 
-    <main class="animate-fade-in" style="padding: 14px; padding-bottom: 95px;">
-      <!-- Partner Stats -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px;">
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px; text-align: center;">
-          <div style="font-size: 18px; font-weight: 800; color: var(--primary);">₹480</div>
-          <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Today's Pay</div>
-        </div>
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px; text-align: center;">
-          <div style="font-size: 18px; font-weight: 800; color: var(--success);">4</div>
-          <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Completed</div>
-        </div>
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px; text-align: center;">
-          <div style="font-size: 18px; font-weight: 800; color: var(--accent);">4.9 ★</div>
-          <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Rating</div>
-        </div>
-      </div>
+  <main>
+    <section>
+      <h2>New Deliveries Assigned</h2>
+      <ul>
+        <li>
+          <p>Pickup Location: Warehouse / Seller Address</p>
+          <p>Drop Location: Buyer Delivery Address</p>
+          <button type="button">Mark as Delivered</button>
+        </li>
+      </ul>
+    </section>
 
-      <div style="font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">Assigned Deliveries</div>
-      <!-- Tasks List populated dynamically by app.js -->
-      <ul style="list-style: none; padding: 0; margin: 0;"></ul>
-    </main>
+    <section>
+      <h2>Completed Deliveries</h2>
+      <ul></ul>
+    </section>
+  </main>
 
-    <footer>
-      <nav>
-        <a href="home.html">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-          <span>Home</span>
-        </a>
-        <a href="categories.html">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          <span>Categories</span>
-        </a>
-        <a href="sell.html" class="nav-fab">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        </a>
-        <a href="profile.html">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span>Profile</span>
-        </a>
-      </nav>
-    </footer>
-  </div>
+  <footer>
+    <nav>
+      <a href="#tasks">Tasks</a>
+      <a href="#history">History</a>
+      <a href="#profile">Profile</a>
+    </nav>
+  </footer>
 
   <script src="../../public/js/app.js"></script>
 </body>
